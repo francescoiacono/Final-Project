@@ -5,7 +5,7 @@
       "app_key": "application.generated.unity.myfinalproject.exe",
       "launch_type": "url",
       "url": "steam://launch/",
-      "action_manifest_path": "C:\\Users\\fiaco\\Desktop\\FrancescoFP\\Final-Project\\actions.json",
+      "action_manifest_path": "C:\\Users\\fiaco\\Desktop\\aaaaaa\\actions.json",
       "strings": {
         "en_us": {
           "name": "MyFinalProject [Testing]"
