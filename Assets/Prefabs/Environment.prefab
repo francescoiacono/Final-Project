@@ -55,7 +55,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4436793357555972}
   m_Layer: 0
-  m_Name: left_side
+  m_Name: right_side
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -344,7 +344,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4108479176310290}
   m_Layer: 0
-  m_Name: right_side
+  m_Name: left_side
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -752,7 +752,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4593122854436116}
   m_Layer: 0
-  m_Name: Middle
+  m_Name: mid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
