@@ -13,35 +13,86 @@
       <usages-collector id="statistics.lifecycle.project">
         <counts>
           <entry key="project.closed" value="1" />
+          <entry key="project.open.time.21" value="1" />
           <entry key="project.open.time.37" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.opened" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="cs" value="91" />
+          <entry key="cs" value="634" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="C#" value="91" />
+          <entry key="C#" value="634" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="cs" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="C#" value="1" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/SoundManager.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="12" column="67" selection-start-line="12" selection-start-column="67" selection-end-line="12" selection-end-column="67" />
+              <folding>
+                <marker date="1549714020581" expanded="false" signature="6:78" ph="..." />
+                <marker date="1549714020581" expanded="true" signature="121:438" ph="{...}" />
+                <marker date="1549714020581" expanded="true" signature="205:374" ph="{...}" />
+                <marker date="1549714020581" expanded="true" signature="429:436" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/MapManager.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="525">
+              <caret line="41" column="59" selection-start-line="41" selection-start-column="59" selection-end-line="41" selection-end-column="59" />
+              <folding>
+                <marker date="1549714618793" expanded="false" signature="6:97" ph="..." />
+                <marker date="1549714618793" expanded="true" signature="138:1762" ph="{...}" />
+                <marker date="1549714618793" expanded="true" signature="405:597" ph="{...}" />
+                <marker date="1549714618793" expanded="true" signature="613:632" ph="{...}" />
+                <marker date="1549714618793" expanded="true" signature="780:1090" ph="{...}" />
+                <marker date="1549714618793" expanded="true" signature="868:1087" ph="{...}" />
+                <marker date="1549714618793" expanded="true" signature="1184:1400" ph="{...}" />
+                <marker date="1549714618793" expanded="true" signature="1229:1302" ph="{...}" />
+                <marker date="1549714618793" expanded="true" signature="1353:1396" ph="{...}" />
+                <marker date="1549714618793" expanded="true" signature="1495:1578" ph="{...}" />
+                <marker date="1549714618793" expanded="true" signature="1641:1759" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SoundManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/MapManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Assets/Scripts/SoundManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MapManager.cs" />
       </list>
     </option>
   </component>
@@ -51,9 +102,9 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="1658" />
-    <option name="y" value="-931" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="475" />
+    <option name="y" value="-888" />
     <option name="width" value="1512" />
     <option name="height" value="798" />
   </component>
@@ -63,13 +114,13 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="FileSystemExplorer" />
       <pane id="UnityExplorer">
         <option name="show-hidden-items" value="false" />
       </pane>
       <pane id="SolutionExplorer">
         <option name="show-all-files" value="false" />
       </pane>
-      <pane id="FileSystemExplorer" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -116,11 +167,12 @@
       <option name="presentableId" value="Default" />
       <updated>1549670547515</updated>
       <workItem from="1549670563862" duration="651000" />
+      <workItem from="1549713545021" duration="1062000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="651000" />
+    <option name="totallyTimeSpent" value="1713000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -132,19 +184,12 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1658" y="-931" width="1512" height="798" extended-state="0" />
+    <frame x="551" y="-1088" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
       <window_info content_ui="combo" id="Project" order="0" weight="0.3140496" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="NuGet" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Unity" />
-      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Unit Tests" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -152,12 +197,20 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Errors In Solution" />
-      <window_info anchor="right" id="Database" />
-      <window_info anchor="right" id="Unit Tests Coverage" />
+      <window_info anchor="bottom" id="NuGet" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Unity" order="10" />
+      <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Unit Tests" order="12" />
+      <window_info anchor="bottom" id="Terminal" order="13" />
+      <window_info anchor="bottom" id="Event Log" order="14" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Errors In Solution" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="right" id="Unit Tests Coverage" order="5" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -181,13 +234,33 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/SoundManager.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="5" selection-start-column="5" selection-end-column="5" />
+        <state relative-caret-position="150">
+          <caret line="12" column="67" selection-start-line="12" selection-start-column="67" selection-end-line="12" selection-end-column="67" />
           <folding>
-            <marker date="1549671035992" expanded="true" signature="6:103" ph="..." />
-            <marker date="1549671035992" expanded="true" signature="146:309" ph="{...}" />
-            <marker date="1549671035992" expanded="true" signature="227:245" ph="{...}" />
-            <marker date="1549671035992" expanded="true" signature="300:307" ph="{...}" />
+            <marker date="1549714020581" expanded="false" signature="6:78" ph="..." />
+            <marker date="1549714020581" expanded="true" signature="121:438" ph="{...}" />
+            <marker date="1549714020581" expanded="true" signature="205:374" ph="{...}" />
+            <marker date="1549714020581" expanded="true" signature="429:436" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/MapManager.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="41" column="59" selection-start-line="41" selection-start-column="59" selection-end-line="41" selection-end-column="59" />
+          <folding>
+            <marker date="1549714618793" expanded="false" signature="6:97" ph="..." />
+            <marker date="1549714618793" expanded="true" signature="138:1762" ph="{...}" />
+            <marker date="1549714618793" expanded="true" signature="405:597" ph="{...}" />
+            <marker date="1549714618793" expanded="true" signature="613:632" ph="{...}" />
+            <marker date="1549714618793" expanded="true" signature="780:1090" ph="{...}" />
+            <marker date="1549714618793" expanded="true" signature="868:1087" ph="{...}" />
+            <marker date="1549714618793" expanded="true" signature="1184:1400" ph="{...}" />
+            <marker date="1549714618793" expanded="true" signature="1229:1302" ph="{...}" />
+            <marker date="1549714618793" expanded="true" signature="1353:1396" ph="{...}" />
+            <marker date="1549714618793" expanded="true" signature="1495:1578" ph="{...}" />
+            <marker date="1549714618793" expanded="true" signature="1641:1759" ph="{...}" />
           </folding>
         </state>
       </provider>

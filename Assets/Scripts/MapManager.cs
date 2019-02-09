@@ -7,7 +7,7 @@ public class MapManager : MonoBehaviour
 {
 
 	public int Speed;
-	public GameObject Env;
+	public GameObject[] Envs;
 	public int nEnv;
     public float padding = 100f;
 
@@ -31,17 +31,18 @@ public class MapManager : MonoBehaviour
 
 	/*******************************************************************/
 	
-	
+	// Function to spawn all the needed environments	
 	void InitialiseEnv()
 	{
 		EnvList = new List<GameObject>(); // Init List
 		
 		for (int i = 0; i < nEnv; i++)
 		{
-			EnvList.Add(Instantiate(Env, new Vector3(i*padding, 0f, 0f), Quaternion.identity)); // Adding Elements to list
+			EnvList.Add(Instantiate(Envs[Mathf.Abs(Random.Range(0, Envs.Length))], new Vector3(i*padding, 0f, 0f), Quaternion.identity)); // Adding Elements to list	
 		}
 	}
 
+	// Function to move the environments in the opposite direction of the plane
 	void MoveEnv()
 	{
 		for (int i = 0; i < EnvList.Count; i++)
@@ -57,6 +58,7 @@ public class MapManager : MonoBehaviour
 
 	}
 
+	// Function to delete the last environment which is out of the player view
 	void DeleteEnv()
 	{
 		envToDestroy = EnvList[0];
@@ -64,9 +66,10 @@ public class MapManager : MonoBehaviour
 		Destroy(envToDestroy);
 	}
 
+	// Function to create a new environment
 	void CreateNewEnv()
 	{
-		EnvList.Add(Instantiate(Env, lastPosCoord, Quaternion.identity));
+		EnvList.Add(Instantiate(Envs[Mathf.Abs(Random.Range(0, Envs.Length))], lastPosCoord, Quaternion.identity));
 	}
 
 }
