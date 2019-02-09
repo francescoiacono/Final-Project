@@ -100,7 +100,7 @@ public class MapManager : MonoBehaviour
 					break;
 				}
 			}
-			lastPosCoord = new Vector3(EnvList[nEnv-1].transform.position.x, EnvList[nEnv-1].transform.position.y, EnvList[nEnv-1].transform.position.z);
+			lastPosCoord = new Vector3(EnvList[nEnv-1].transform.position.x, EnvList[nEnv-1].transform.position.y, EnvList[nEnv-1].transform.position.z); // TODO fix this
 		}
 	}
 }
