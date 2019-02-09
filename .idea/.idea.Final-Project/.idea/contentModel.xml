@@ -10,6 +10,7 @@
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
           <e p="MapManager.cs" t="Include" />
+          <e p="PlaneManager.cs" t="Include" />
           <e p="SoundManager.cs" t="Include" />
         </e>
         <e p="Standard Assets" t="Include">

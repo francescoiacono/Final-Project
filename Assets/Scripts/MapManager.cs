@@ -1,31 +1,42 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class MapManager : MonoBehaviour
 {
 
+	[Header("Environment speed")]
 	public int Speed;
-	public GameObject[] Envs;
+	[Header("Number of environment to spawn")]
 	public int nEnv;
-    public float padding = 100f;
+	public float padding = 100f; // distance between the environments
+	public bool descending; // Bool to test when the plane descends
+	
+	[Header("Environments Prefabs")]
+	public GameObject[] Envs;
 
     private List<GameObject> EnvList;
 	private Vector3 dir = new Vector3(-1f, 0f,0f);
 	private Vector3 lastPosCoord;
 	private GameObject envToDestroy;
+	private GameObject plane;
+	
+	
 
 	void Start()
 	{
 		InitialiseEnv();
 		lastPosCoord = new Vector3(EnvList[nEnv-1].transform.position.x, EnvList[nEnv-1].transform.position.y, EnvList[nEnv-1].transform.position.z);
-		print(lastPosCoord);
+		plane = GameObject.FindWithTag("Plane");
 	}
 
 	void Update()
 	{
 		MoveEnv();
+		MoveEnvToPlane();
 	}
 
 
@@ -72,4 +83,26 @@ public class MapManager : MonoBehaviour
 		EnvList.Add(Instantiate(Envs[Mathf.Abs(Random.Range(0, Envs.Length))], lastPosCoord, Quaternion.identity));
 	}
 
+	// Function to move environment towards the plane
+	void MoveEnvToPlane()
+	{
+		if (descending)
+		{
+			for (int i = 0; i < EnvList.Count; i++)
+			{
+				if (EnvList[i].transform.position.y <= plane.transform.position.y)
+				{
+					EnvList[i].transform.Translate(new Vector3(0, 1, 0) * Speed * Time.deltaTime);
+				}
+				else
+				{
+					break;
+				}
+
+			}
+			
+			
+			
+		}
+	}
 }
