@@ -19,7 +19,7 @@ public class MapManager : MonoBehaviour
 	public GameObject[] Envs;
 
     private List<GameObject> EnvList;
-	private Vector3 dir = new Vector3(-1f, 0f,0f);
+	private Vector3 dir; 
 	private Vector3 lastPosCoord;
 	private GameObject envToDestroy;
 	private GameObject plane;
@@ -29,6 +29,7 @@ public class MapManager : MonoBehaviour
 	void Start()
 	{
 		InitialiseEnv();
+		dir = new Vector3(-1f, 0f,0f);
 		lastPosCoord = new Vector3(EnvList[nEnv-1].transform.position.x, EnvList[nEnv-1].transform.position.y, EnvList[nEnv-1].transform.position.z);
 		plane = GameObject.FindWithTag("Plane");
 	}
@@ -86,13 +87,13 @@ public class MapManager : MonoBehaviour
 	// Function to move environment towards the plane
 	void MoveEnvToPlane()
 	{
-		if (descending)
+		if (plane.GetComponent<PlaneManager>().Descending)
 		{
 			for (int i = 0; i < EnvList.Count; i++)
 			{
 				if (EnvList[i].transform.position.y <= plane.transform.position.y)
 				{
-					EnvList[i].transform.Translate(new Vector3(0, 1, 0) * Speed * Time.deltaTime);
+					EnvList[i].transform.Translate(new Vector3(0, 0.8f, 0) * Speed * Time.deltaTime);
 				}
 				else
 				{
@@ -100,9 +101,6 @@ public class MapManager : MonoBehaviour
 				}
 
 			}
-			
-			
-			
 		}
 	}
 }
