@@ -87,7 +87,7 @@ public class MapManager : MonoBehaviour
 	// Function to move environment towards the plane
 	void MoveEnvToPlane()
 	{
-		if (plane.GetComponent<PlaneManager>().Descending)
+		if (plane.GetComponent<PlaneManager>().CurrentState == PlaneManager.State.Descending)
 		{
 			for (int i = 0; i < EnvList.Count; i++)
 			{
@@ -99,8 +99,8 @@ public class MapManager : MonoBehaviour
 				{
 					break;
 				}
-
 			}
+			lastPosCoord = new Vector3(EnvList[nEnv-1].transform.position.x, EnvList[nEnv-1].transform.position.y, EnvList[nEnv-1].transform.position.z);
 		}
 	}
 }
