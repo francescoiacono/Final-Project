@@ -24,14 +24,13 @@ public class MapManager : MonoBehaviour
 	private GameObject envToDestroy;
 	private GameObject plane;
 	
-	
+	/*************************Init+Update******************************/
 
 	void Start()
 	{
 		InitialiseEnv();
 		dir = new Vector3(-1f, 0f,0f);
 		lastPosCoord = new Vector3(EnvList[nEnv-1].transform.position.x, EnvList[nEnv-1].transform.position.y, EnvList[nEnv-1].transform.position.z);
-		print("Old last coord: " + lastPosCoord);
 		plane = GameObject.FindWithTag("Plane");
 	}
 
@@ -42,7 +41,7 @@ public class MapManager : MonoBehaviour
 	}
 
 
-	/*******************************************************************/
+	/**************************MyFunctions****************************/
 	
 	// Function to spawn all the needed environments	
 	void InitialiseEnv()
@@ -102,7 +101,7 @@ public class MapManager : MonoBehaviour
 				}
 			}
 			lastPosCoord.y =EnvList[nEnv-1].transform.position.y; // Updating Y position
-			print("New last coord: " + lastPosCoord);
+		
 		}
 	}
 }

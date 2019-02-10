@@ -8,6 +8,7 @@ public class PlaneManager : MonoBehaviour
 
 	[Header("Plane Heading")]
 	public float RotationSpeed;
+	public float Angle;
 	
 	public enum State
 	{
@@ -17,6 +18,8 @@ public class PlaneManager : MonoBehaviour
 	}
 	[Header("Plane State")]
 	public State CurrentState;
+
+	private bool reachedAngle;
 
 	/***************************************************************************************************************/
 	
@@ -39,31 +42,51 @@ public class PlaneManager : MonoBehaviour
 					PlaneAsceding();
 					break;
 		}
+		
 	}
 
 	// Function to descend
 	void PlaneDescending()
 	{
-		gameObject.transform.Rotate(new Vector3(1f,0f,0f)*RotationSpeed*Time.deltaTime);
+		if ((transform.eulerAngles.x <= 360 && transform.eulerAngles.x >= 360 - Angle) || 
+		    (transform.eulerAngles.x <= Angle && transform.eulerAngles.x >= 0))
+		{
+			transform.Rotate(new Vector3(1f, 0f, 0f) * RotationSpeed * Time.deltaTime);
+		}
+		else
+		{
+			transform.eulerAngles = new Vector3(Angle, 90f, 0f);
+			print("stop des");
+		}
 	}
 
-	
+
+
 	// Function to ascend
 	void PlaneAsceding()
 	{
-		gameObject.transform.Rotate(new Vector3(-1f,0f,0f)*RotationSpeed*Time.deltaTime);
+		if ((transform.eulerAngles.x <= 360 && transform.eulerAngles.x >= 360 - Angle) || 
+		    (transform.eulerAngles.x <= Angle && transform.eulerAngles.x >= 0))
+		{
+			transform.Rotate(new Vector3(-1f, 0f, 0f) * RotationSpeed * Time.deltaTime);
+		}
+		else
+		{
+			transform.eulerAngles = new Vector3(-Angle, 90f, 0f);
+			print("stop asc");
+		}
 	}
 
 	// Function to stabilise the plane
 	void PlaneStable()
 	{
-		if (gameObject.transform.rotation.x > 0f)
+		if (transform.rotation.x > 0f)
 		{
-			gameObject.transform.Rotate(new Vector3(-0.5f,0f,0f)*RotationSpeed*Time.deltaTime);
+			transform.Rotate(new Vector3(-0.5f,0f,0f)*RotationSpeed*Time.deltaTime);
 		}
-		else if (gameObject.transform.rotation.x < 0f)
+		else if (transform.rotation.x < 0f)
 		{
-			gameObject.transform.Rotate(new Vector3(0.5f,0f,0f)*RotationSpeed*Time.deltaTime);
+			transform.Rotate(new Vector3(0.5f,0f,0f)*RotationSpeed*Time.deltaTime);
 		}
 		else
 		{
