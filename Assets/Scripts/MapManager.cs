@@ -31,6 +31,7 @@ public class MapManager : MonoBehaviour
 		InitialiseEnv();
 		dir = new Vector3(-1f, 0f,0f);
 		lastPosCoord = new Vector3(EnvList[nEnv-1].transform.position.x, EnvList[nEnv-1].transform.position.y, EnvList[nEnv-1].transform.position.z);
+		print("Old last coord: " + lastPosCoord);
 		plane = GameObject.FindWithTag("Plane");
 	}
 
@@ -100,7 +101,8 @@ public class MapManager : MonoBehaviour
 					break;
 				}
 			}
-			lastPosCoord = new Vector3(EnvList[nEnv-1].transform.position.x, EnvList[nEnv-1].transform.position.y, EnvList[nEnv-1].transform.position.z); // TODO fix this
+			lastPosCoord.y =EnvList[nEnv-1].transform.position.y; // Updating Y position
+			print("New last coord: " + lastPosCoord);
 		}
 	}
 }
