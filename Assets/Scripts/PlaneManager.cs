@@ -43,21 +43,17 @@ public class PlaneManager : MonoBehaviour
 					break;
 		}
 		
+		
+		print("angle: " + transform.eulerAngles);
+
+		
 	}
 
 	// Function to descend
 	void PlaneDescending()
 	{
-		if ((transform.eulerAngles.x <= 360 && transform.eulerAngles.x >= 360 - Angle) || 
-		    (transform.eulerAngles.x <= Angle && transform.eulerAngles.x >= 0))
-		{
-			transform.Rotate(new Vector3(1f, 0f, 0f) * RotationSpeed * Time.deltaTime);
-		}
-		else
-		{
-			transform.eulerAngles = new Vector3(Angle, 90f, 0f);
-			print("stop des");
-		}
+		if (Mathf.Floor(transform.localEulerAngles.x) != Angle)
+			transform.Rotate(Vector3.right * RotationSpeed * Time.deltaTime);
 	}
 
 
@@ -65,30 +61,22 @@ public class PlaneManager : MonoBehaviour
 	// Function to ascend
 	void PlaneAsceding()
 	{
-		if ((transform.eulerAngles.x <= 360 && transform.eulerAngles.x >= 360 - Angle) || 
-		    (transform.eulerAngles.x <= Angle && transform.eulerAngles.x >= 0))
-		{
-			transform.Rotate(new Vector3(-1f, 0f, 0f) * RotationSpeed * Time.deltaTime);
-		}
-		else
-		{
-			transform.eulerAngles = new Vector3(-Angle, 90f, 0f);
-			print("stop asc");
-		}
+		if (Mathf.Floor(transform.localEulerAngles.x) != 360 - Angle)
+			transform.Rotate(Vector3.left * RotationSpeed * Time.deltaTime);
 	}
 
 	// Function to stabilise the plane
 	void PlaneStable()
 	{
-		if (transform.rotation.x > 0f)
+		if (Mathf.Floor(transform.localEulerAngles.x)> 0f && Mathf.Floor(transform.localEulerAngles.x) < Angle)
 		{
-			transform.Rotate(new Vector3(-0.5f,0f,0f)*RotationSpeed*Time.deltaTime);
+			transform.Rotate(new Vector3(-1f,0f,0f)*RotationSpeed*Time.deltaTime);
 		}
-		else if (transform.rotation.x < 0f)
+		else if (Mathf.Floor(transform.localEulerAngles.x) < 360f)
 		{
-			transform.Rotate(new Vector3(0.5f,0f,0f)*RotationSpeed*Time.deltaTime);
+			transform.Rotate(new Vector3(1f,0f,0f)*RotationSpeed*Time.deltaTime);
 		}
-		else
+		else if (Mathf.Floor(transform.localEulerAngles.x) == 0)
 		{
 			print("Stable");
 		}
