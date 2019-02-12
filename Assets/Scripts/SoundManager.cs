@@ -5,48 +5,51 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
 
+    public static SoundManager Instance;
+
 	public AudioFile[] AudioFiles;
-	public AudioSource sounds;
 
 	private PlaneManager planeManager;
 	public bool played;
-	
-	// Use this for initialization
-	void Start ()
+
+    void Awake()
+    {
+        Instance = this;
+    }
+
+    // Use this for initialization
+    void Start ()
 	{
-		PlaneSound();
 		planeManager = GameObject.FindWithTag("Plane").GetComponent<PlaneManager>();
 	}
 	
 	// Update is called once per frame
 	void Update()
 	{
-		UpdateSound("brace");
 	}
 
-	void PlaneSound()
-	{
-		sounds.clip = GetAudioFile("plane-sound");
-		sounds.loop = true;
-		sounds.Play();
-	}
+    public void PlaySound(string name)
+    {
+        AudioFile af = GetAudioFile(name);
+        if (af != null)
+        {
+            if(!af.played)
+            {
+                af.AudioSource.Play();
+                af.played = true;
+            }
+        }
+    }
 
-	void UpdateSound(string name)
-	{
-		sounds.clip = GetAudioFile(name);
-		sounds.loop = false;
-		sounds.PlayOneShot(sounds.clip, 1);
-	}
 
-
-	AudioClip GetAudioFile(string name)
+	AudioFile GetAudioFile(string name)
 	{
 
 		for (int i = 0; i < AudioFiles.Length; i++)
 		{
 			if (AudioFiles[i].AudioName == name)
 			{
-				return AudioFiles[i].ClipPath;
+				return AudioFiles[i];
 			}
 		}
 

@@ -6,6 +6,7 @@ public class AudioFile
 {
 
     public string AudioName;
-    public AudioClip ClipPath;
+    public AudioSource AudioSource;
+    [HideInInspector] public bool played;
 
 }

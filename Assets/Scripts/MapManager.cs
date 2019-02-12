@@ -23,7 +23,7 @@ public class MapManager : MonoBehaviour
 	private Vector3 lastPosCoord;
 	private GameObject envToDestroy;
 	private GameObject plane;
-	private SoundManager sm;
+    private SoundManager sm;
 
 	/*************************Init+Update******************************/
 
@@ -34,7 +34,7 @@ public class MapManager : MonoBehaviour
 		lastPosCoord = new Vector3(EnvList[nEnv - 1].transform.position.x, EnvList[nEnv - 1].transform.position.y,
 			EnvList[nEnv - 1].transform.position.z);
 		plane = GameObject.FindWithTag("Plane");
-		sm.gameObject.GetComponent<SoundManager>();
+        sm = SoundManager.Instance;
 	}
 
 void Update()
@@ -97,7 +97,7 @@ void Update()
 			{
 				if (EnvList[i].transform.position.y <= plane.transform.position.y)
 				{
-					EnvList[i].transform.Translate(new Vector3(0, 1f, 0) * SpeedY * Time.deltaTime);
+                    EnvList[i].transform.Translate(new Vector3(0, 1f, 0) * plane.transform.localEulerAngles.x * SpeedY * Time.deltaTime);
 				}
 				else
 				{

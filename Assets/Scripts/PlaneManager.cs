@@ -53,6 +53,8 @@ public class PlaneManager : MonoBehaviour
 	{
 		if (Mathf.Floor(transform.localEulerAngles.x) != Angle)
 			transform.Rotate(Vector3.right * RotationSpeed * Time.deltaTime);
+
+        SoundManager.Instance.PlaySound("brace");
 	}
 
 
@@ -67,12 +69,15 @@ public class PlaneManager : MonoBehaviour
 	// Function to stabilise the plane
 	void PlaneStable()
 	{
-		if (Mathf.Floor(transform.localEulerAngles.x) != 0)
+        int x = (int)Mathf.Floor(transform.localEulerAngles.x);
+        print(x);
+        if (x != 0)
 		{
-			Vector3 stabilizer = new Vector3(0f, transform.eulerAngles.y, transform.eulerAngles.z);
-			transform.localEulerAngles =
-				Vector3.Lerp(transform.localEulerAngles, stabilizer, RotationSpeed * Time.deltaTime);
-		}
+            if(x >= 360 - Angle)
+                transform.Rotate(Vector3.right * RotationSpeed * Time.deltaTime);
+            else if (x <= Angle)
+                transform.Rotate(Vector3.left * RotationSpeed * Time.deltaTime);
+        }
 	}
 
 }
