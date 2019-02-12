@@ -6,7 +6,8 @@ using UnityEngine;
 public class PlaneManager : MonoBehaviour
 {
 
-	[Header("Plane Heading")]
+	[Header("Plane Settings")] 
+	public Vector3 PlanePosition;
 	public float RotationSpeed;
 	public float Angle;
 	
@@ -19,12 +20,11 @@ public class PlaneManager : MonoBehaviour
 	[Header("Plane State")]
 	public State CurrentState;
 
-	private bool reachedAngle;
-
 	/***************************************************************************************************************/
 	
 	void Start()
-	{
+	{	
+		transform.position = PlanePosition;
 		CurrentState = State.Stable;
 	}
 
@@ -42,7 +42,6 @@ public class PlaneManager : MonoBehaviour
 					PlaneAsceding();
 					break;
 		}
-		
 		
 		print("angle: " + transform.eulerAngles);
 
@@ -68,17 +67,11 @@ public class PlaneManager : MonoBehaviour
 	// Function to stabilise the plane
 	void PlaneStable()
 	{
-		if (Mathf.Floor(transform.localEulerAngles.x)> 0f && Mathf.Floor(transform.localEulerAngles.x) < Angle)
+		if (Mathf.Floor(transform.localEulerAngles.x) != 0)
 		{
-			transform.Rotate(new Vector3(-1f,0f,0f)*RotationSpeed*Time.deltaTime);
-		}
-		else if (Mathf.Floor(transform.localEulerAngles.x) < 360f)
-		{
-			transform.Rotate(new Vector3(1f,0f,0f)*RotationSpeed*Time.deltaTime);
-		}
-		else if (Mathf.Floor(transform.localEulerAngles.x) == 0)
-		{
-			print("Stable");
+			Vector3 stabilizer = new Vector3(0f, transform.eulerAngles.y, transform.eulerAngles.z);
+			transform.localEulerAngles =
+				Vector3.Lerp(transform.localEulerAngles, stabilizer, RotationSpeed * Time.deltaTime);
 		}
 	}
 

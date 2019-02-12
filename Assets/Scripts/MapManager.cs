@@ -8,33 +8,36 @@ using Random = UnityEngine.Random;
 public class MapManager : MonoBehaviour
 {
 
-	[Header("Environment speed")]
-	public int Speed;
+	[Header("Environment speed")] public float SpeedX;
+	public float SpeedY;
+
 	[Header("Number of environment to spawn")]
 	public int nEnv;
-	public float padding = 100f; // distance between the environments
-	public bool descending; // Bool to test when the plane descends
-	
-	[Header("Environments Prefabs")]
-	public GameObject[] Envs;
 
-    private List<GameObject> EnvList;
-	private Vector3 dir; 
+	public float padding = 100f; // distance between the environments
+
+	[Header("Environments Prefabs")] public GameObject[] Envs;
+
+	private List<GameObject> EnvList;
+	private Vector3 dir;
 	private Vector3 lastPosCoord;
 	private GameObject envToDestroy;
 	private GameObject plane;
-	
+	private SoundManager sm;
+
 	/*************************Init+Update******************************/
 
 	void Start()
 	{
 		InitialiseEnv();
-		dir = new Vector3(-1f, 0f,0f);
-		lastPosCoord = new Vector3(EnvList[nEnv-1].transform.position.x, EnvList[nEnv-1].transform.position.y, EnvList[nEnv-1].transform.position.z);
+		dir = new Vector3(-1f, 0f, 0f);
+		lastPosCoord = new Vector3(EnvList[nEnv - 1].transform.position.x, EnvList[nEnv - 1].transform.position.y,
+			EnvList[nEnv - 1].transform.position.z);
 		plane = GameObject.FindWithTag("Plane");
+		sm.gameObject.GetComponent<SoundManager>();
 	}
 
-	void Update()
+void Update()
 	{
 		MoveEnv();
 		MoveEnvToPlane();
@@ -47,10 +50,11 @@ public class MapManager : MonoBehaviour
 	void InitialiseEnv()
 	{
 		EnvList = new List<GameObject>(); // Init List
-		
+
 		for (int i = 0; i < nEnv; i++)
 		{
-			EnvList.Add(Instantiate(Envs[Mathf.Abs(Random.Range(0, Envs.Length))], new Vector3(i*padding, 0f, 0f), Quaternion.identity)); // Adding Elements to list	
+			EnvList.Add(Instantiate(Envs[Mathf.Abs(Random.Range(0, Envs.Length))], new Vector3(i * padding, 0f, 0f),
+				Quaternion.identity)); // Adding Elements to list	
 		}
 	}
 
@@ -59,7 +63,7 @@ public class MapManager : MonoBehaviour
 	{
 		for (int i = 0; i < EnvList.Count; i++)
 		{
-			EnvList[i].transform.Translate(dir * Time.deltaTime * Speed);
+			EnvList[i].transform.Translate(dir * Time.deltaTime * SpeedX);
 		}
 
 		if (EnvList[0].transform.position.x < -padding)
@@ -93,7 +97,7 @@ public class MapManager : MonoBehaviour
 			{
 				if (EnvList[i].transform.position.y <= plane.transform.position.y)
 				{
-					EnvList[i].transform.Translate(new Vector3(0, 0.8f, 0) * Speed * Time.deltaTime);
+					EnvList[i].transform.Translate(new Vector3(0, 1f, 0) * SpeedY * Time.deltaTime);
 				}
 				else
 				{
