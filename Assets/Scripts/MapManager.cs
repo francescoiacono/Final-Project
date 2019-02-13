@@ -5,10 +5,13 @@ using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+// Moving map around the plane
+
 public class MapManager : MonoBehaviour
 {
 
-	[Header("Environment speed")] public float SpeedX;
+	[Header("Environment speed")]
+    public float SpeedX;
 	public float SpeedY;
 
 	[Header("Number of environment to spawn")]
@@ -41,7 +44,7 @@ void Update()
 	{
 		MoveEnv();
 		MoveEnvToPlane();
-	}
+    }
 
 
 	/**************************MyFunctions****************************/
@@ -104,8 +107,8 @@ void Update()
 					break;
 				}
 			}
-			lastPosCoord.y =EnvList[nEnv-1].transform.position.y; // Updating Y position
-		
+			lastPosCoord.y = EnvList[nEnv-1].transform.position.y; // Updating Y position
+		    
 		}
 	}
 }

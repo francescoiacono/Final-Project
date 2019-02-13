@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Defining and controlling Plane Movements
+
 public class PlaneManager : MonoBehaviour
 {
 
@@ -30,6 +32,7 @@ public class PlaneManager : MonoBehaviour
 
 	void Update () {
 
+        // Switching state
 		switch (CurrentState)
 		{
 				case State.Stable:
@@ -41,11 +44,7 @@ public class PlaneManager : MonoBehaviour
 				case State.Ascending:
 					PlaneAsceding();
 					break;
-		}
-		
-		print("angle: " + transform.eulerAngles);
-
-		
+		}	
 	}
 
 	// Function to descend
@@ -58,7 +57,6 @@ public class PlaneManager : MonoBehaviour
 	}
 
 
-
 	// Function to ascend
 	void PlaneAsceding()
 	{
@@ -66,11 +64,11 @@ public class PlaneManager : MonoBehaviour
 			transform.Rotate(Vector3.left * RotationSpeed * Time.deltaTime);
 	}
 
+
 	// Function to stabilise the plane
 	void PlaneStable()
 	{
         int x = (int)Mathf.Floor(transform.localEulerAngles.x);
-        print(x);
         if (x != 0)
 		{
             if(x >= 360 - Angle)
@@ -79,5 +77,10 @@ public class PlaneManager : MonoBehaviour
                 transform.Rotate(Vector3.left * RotationSpeed * Time.deltaTime);
         }
 	}
+
+    /******************************CollisionDetection*********************************/
+
+
+
 
 }

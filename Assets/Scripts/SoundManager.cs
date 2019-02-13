@@ -2,32 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Controlling sounds
+
 public class SoundManager : MonoBehaviour
 {
 
-    public static SoundManager Instance;
+    public static SoundManager Instance; // test, TODO instance test
+    public AudioFile[] AudioFiles; // All audiofiles stored in this array that can be updated in the inspector
 
-	public AudioFile[] AudioFiles;
 
 	private PlaneManager planeManager;
-	public bool played;
 
     void Awake()
     {
-        Instance = this;
+        Instance = this; 
     }
 
-    // Use this for initialization
     void Start ()
 	{
 		planeManager = GameObject.FindWithTag("Plane").GetComponent<PlaneManager>();
 	}
-	
-	// Update is called once per frame
-	void Update()
-	{
-	}
 
+
+    // Function to play a determined sound once
     public void PlaySound(string name)
     {
         AudioFile af = GetAudioFile(name);
@@ -36,12 +33,12 @@ public class SoundManager : MonoBehaviour
             if(!af.played)
             {
                 af.AudioSource.Play();
-                af.played = true;
+	            af.played = true;
             }
         }
     }
 
-
+    // Function that gets the audiofile name and if it matches return that audiofile
 	AudioFile GetAudioFile(string name)
 	{
 

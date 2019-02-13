@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Plane
   - Environment
+  - Water
+  - Splasher
   layers:
   - Default
   - TransparentFX
