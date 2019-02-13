@@ -12,7 +12,6 @@ public class PlaneManager : MonoBehaviour
 	public Vector3 PlanePosition;
 	public float RotationSpeed;
 	public float Angle;
-	
 	public enum State
 	{
 		Stable,
@@ -21,6 +20,9 @@ public class PlaneManager : MonoBehaviour
 	}
 	[Header("Plane State")]
 	public State CurrentState;
+
+	private bool up;
+	private bool stable;
 
 	/***************************************************************************************************************/
 	
@@ -70,16 +72,45 @@ public class PlaneManager : MonoBehaviour
 	{
         int x = (int)Mathf.Floor(transform.localEulerAngles.x);
         if (x != 0)
-		{
-            if(x >= 360 - Angle)
+        {
+	        stable = false;
+			if(x >= 360 - Angle)
                 transform.Rotate(Vector3.right * RotationSpeed * Time.deltaTime);
             else if (x <= Angle)
                 transform.Rotate(Vector3.left * RotationSpeed * Time.deltaTime);
         }
+		else
+        {
+	        stable = true;
+	        if (stable)
+	        {
+		        Floating();
+	        }
+        }
 	}
 
-    /******************************CollisionDetection*********************************/
+	void Floating()
+	{
+		print("up");
+		StartCoroutine(floatUp(1f));
+		print("down");
+		StartCoroutine(floatDown(1f));
+	}
 
+	// TODO fix floating function !
+	
+	private IEnumerator floatUp(float time)
+	{
+		yield return new WaitForSeconds(time);
+		transform.Translate(new Vector3(0f,0.1f,0f));
+	}
+	
+	private IEnumerator floatDown(float time)
+	{
+		yield return new WaitForSeconds(time);
+		transform.Translate(new Vector3(0f,-0.1f,0f));
+	}
+	
 
 
 

@@ -7,6 +7,7 @@ public class SplashEffect : MonoBehaviour
 	public GameObject SplashObject;
 	//public static SplashEffect Instance;
 	public int MaxSplashObjects;
+	public float LifeTime;
 	
 	private List<Rigidbody> rbs;
 	private List<GameObject> splashObjects;
@@ -38,7 +39,7 @@ public class SplashEffect : MonoBehaviour
 			}
 
 			stop = true;
-			StartCoroutine(WaitAndKill(5f));
+			StartCoroutine(WaitAndKill(LifeTime));
 		}
 	}
 
@@ -49,9 +50,9 @@ public class SplashEffect : MonoBehaviour
 			yield return new WaitForSeconds(lifeTime);
 			if (splashObjects.Count > 0)
 			{
-				foreach (GameObject go in splashObjects)
+				foreach (GameObject splash in splashObjects)
 				{
-					Destroy(go);
+					Destroy(splash);
 				}
 			}
 		}

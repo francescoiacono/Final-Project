@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 114942937785226936}
   m_Layer: 0
   m_Name: Splash
-  m_TagString: Untagged
+  m_TagString: Splasher
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33,9 +33,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1581718531404620}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 223.33, y: 50.264225, z: -11.38}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.70710677}
+  m_LocalPosition: {x: -1.5, y: -0.27, z: 6.11}
+  m_LocalScale: {x: 0.48801917, y: 0.48801917, z: 0.48801917}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -54,3 +54,5 @@ MonoBehaviour:
   SplashObject: {fileID: 1136315698495950, guid: 01d8e2e7e43c1da4fbf525fba29de231,
     type: 2}
   MaxSplashObjects: 10
+  LifeTime: 3
+  stop: 0
