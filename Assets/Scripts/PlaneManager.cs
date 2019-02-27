@@ -72,14 +72,18 @@ public class PlaneManager : MonoBehaviour
                     speed = speed + Acceleration * Time.deltaTime;
                 } else {
                     speed = MaxSpeed;
-                }
-
-                if (k == 2) {
-                    CurrentState = State.Ascending;
-                }
-
-                print(speed);
+                }                
                 transform.position = Vector3.MoveTowards(transform.position, path.position, speed * 0.5f);
+
+
+                ///////////////////////////////////////////////////////////////////////////////////////////
+                // Rotation code from: https://docs.unity3d.com/ScriptReference/Vector3.RotateTowards.html
+                Vector3 targetDir = path.position - transform.position;
+                float step = RotationSpeed * Time.deltaTime;
+                Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, step, 0.0f);
+                transform.rotation = Quaternion.LookRotation(newDir);
+                ///////////////////////////////////////////////////////////////////////////////////////////
+
             }
             else {
                 k++;

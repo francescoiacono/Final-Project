@@ -26573,7 +26573,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 9000
   field of view: 55.644978
   orthographic: 0
   orthographic size: 5
@@ -56425,12 +56425,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlanePosition: {x: 0, y: 2.5, z: 0}
-  MaxSpeed: 5
-  Acceleration: 0.1
-  RotationSpeed: 2
+  MaxSpeed: 8
+  Acceleration: 0.5
+  RotationSpeed: 0.2
   Angle: 10
   CurrentState: 0
   PathPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   followingPath: 0
