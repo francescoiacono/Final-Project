@@ -10,19 +10,23 @@ public class PlaneManager : MonoBehaviour
 
 	[Header("Plane Settings")] 
 	public Vector3 PlanePosition;
+    public Transform Path;
+    public float MovementSpeed;
 	public float RotationSpeed;
 	public float Angle;
-	public enum State
-	{
-		Stable,
-		Descending,
-		Ascending
-	}
+    public enum State
+    {
+        Stable,
+        Descending,
+        Ascending
+    }
+	
 	[Header("Plane State")]
 	public State CurrentState;
 
 	private bool up;
 	private bool stable;
+    public bool followingPath;
 
 	/***************************************************************************************************************/
 	
@@ -46,8 +50,20 @@ public class PlaneManager : MonoBehaviour
 				case State.Ascending:
 					PlaneAsceding();
 					break;
-		}	
+		}
+
+        followPath(Path);
 	}
+
+    // follow path
+    void followPath(Transform path) {
+
+        if (Vector3.Distance(transform.position, path.position) > 0 && followingPath)
+        {
+            float step = MovementSpeed * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, path.position, step);
+        }
+    }
 
 	// Function to descend
 	void PlaneDescending()
@@ -62,42 +78,38 @@ public class PlaneManager : MonoBehaviour
 	// Function to ascend
 	void PlaneAsceding()
 	{
-		if (Mathf.Floor(transform.localEulerAngles.x) != 360 - Angle)
-			transform.Rotate(Vector3.left * RotationSpeed * Time.deltaTime);
+        if (Mathf.Floor(transform.localEulerAngles.x) != 360 - Angle) {
+            transform.Rotate(Vector3.left * RotationSpeed * Time.deltaTime);
+        }
+
+        gameObject.transform.Translate(Vector3.forward * MovementSpeed * Time.deltaTime);
+
 	}
 
 
-	// Function to stabilise the plane
-	void PlaneStable()
-	{
+    // Function to stabilise the plane
+    void PlaneStable()
+    {
         int x = (int)Mathf.Floor(transform.localEulerAngles.x);
         if (x != 0)
         {
-	        stable = false;
-			if(x >= 360 - Angle)
+            stable = false;
+            if (x >= 360 - Angle)
                 transform.Rotate(Vector3.right * RotationSpeed * Time.deltaTime);
             else if (x <= Angle)
                 transform.Rotate(Vector3.left * RotationSpeed * Time.deltaTime);
         }
-		else
-        {
-	        stable = true;
-	        if (stable)
-	        {
-		        Floating();
-	        }
-        }
-	}
+        stable = true;
+    }
 
-	void Floating()
+    // TODO FIX FLOATING
+    void Floating()
 	{
-		print("up");
 		StartCoroutine(floatUp(1f));
-		print("down");
 		StartCoroutine(floatDown(1f));
 	}
 
-	// TODO fix floating function !
+	// TODO fix floating
 	
 	private IEnumerator floatUp(float time)
 	{
