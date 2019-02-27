@@ -10,9 +10,9 @@ public class PlaneManager : MonoBehaviour
 
 	[Header("Plane Settings")] 
 	public Vector3 PlanePosition;
-    public Transform Path;
-    public float MovementSpeed;
-	public float RotationSpeed;
+    public float MaxSpeed;
+    public float Acceleration;
+    public float RotationSpeed;
 	public float Angle;
     public enum State
     {
@@ -24,44 +24,66 @@ public class PlaneManager : MonoBehaviour
 	[Header("Plane State")]
 	public State CurrentState;
 
-	private bool up;
-	private bool stable;
+    [Header("Path")]
+    public Transform[] PathPoints;
     public bool followingPath;
 
+    private bool up;
+	private bool stable;
+    private float speed;
+    private int k;
 	/***************************************************************************************************************/
 	
 	void Start()
 	{	
 		transform.position = PlanePosition;
 		CurrentState = State.Stable;
+        speed = 0;
+        k = 0;
 	}
 
 	void Update () {
 
         // Switching state
-		switch (CurrentState)
-		{
-				case State.Stable:
-					PlaneStable();
-					break;
-				case State.Descending:
-					PlaneDescending();
-					break;
-				case State.Ascending:
-					PlaneAsceding();
-					break;
-		}
+        switch (CurrentState)
+        {
+            case State.Stable:
+                PlaneStable();
+                break;
+            case State.Descending:
+                PlaneDescending();
+                break;
+            case State.Ascending:
+                PlaneAsceding();
+                break;
+        }
 
-        followPath(Path);
+        followPath(PathPoints[k]);
 	}
 
     // follow path
     void followPath(Transform path) {
-
-        if (Vector3.Distance(transform.position, path.position) > 0 && followingPath)
+        if (followingPath)
         {
-            float step = MovementSpeed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, path.position, step);
+            if (Vector3.Distance(transform.position, path.position) > 0)
+            {
+                if (speed < MaxSpeed)
+                {
+                    speed = speed + Acceleration * Time.deltaTime;
+                } else {
+                    speed = MaxSpeed;
+                }
+
+                if (k == 2) {
+                    CurrentState = State.Ascending;
+                }
+
+                print(speed);
+                transform.position = Vector3.MoveTowards(transform.position, path.position, speed * 0.5f);
+            }
+            else {
+                k++;
+            }
         }
     }
 
@@ -78,11 +100,8 @@ public class PlaneManager : MonoBehaviour
 	// Function to ascend
 	void PlaneAsceding()
 	{
-        if (Mathf.Floor(transform.localEulerAngles.x) != 360 - Angle) {
+        if (Mathf.Floor(transform.localEulerAngles.x) != 360 - Angle)
             transform.Rotate(Vector3.left * RotationSpeed * Time.deltaTime);
-        }
-
-        gameObject.transform.Translate(Vector3.forward * MovementSpeed * Time.deltaTime);
 
 	}
 
