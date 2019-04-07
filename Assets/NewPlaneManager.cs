@@ -57,8 +57,7 @@ public class NewPlaneManager : MonoBehaviour {
 
     // Function moves plane forward
     void MoveForward(float speed) {
-        Quaternion q = rigidbody.rotation;
-        rigidbody.AddForce(q.eulerAngles * speed * Time.deltaTime);
+        rigidbody.AddForce(Vector3.back * speed * Time.deltaTime);
     }
 
 
