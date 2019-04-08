@@ -15,12 +15,12 @@ public class MapSpawner : MonoBehaviour {
         numX = 0;
         numY = 0;
 
-        for (int i = 3796; i < sprites.Count; i++) {
+        for (int i = 4498; i < sprites.Count; i++) {
             MapTile.transform.Find("Canvas").Find("Image").GetComponent<Image>().sprite = sprites[i];
-            GameObject tile = Instantiate(MapTile, new Vector3(-50f * numX, 0f, 50f * numY), Quaternion.identity);
+            GameObject tile = Instantiate(MapTile, new Vector3(50f * numX, 0f, 50f * numY), Quaternion.identity);
             tile.name = i + "";
             numX++;
-            if (numX % 50 == 0) {
+            if (numX % 26 == 0) {
                 numY++;
                 numX = 0;
             }

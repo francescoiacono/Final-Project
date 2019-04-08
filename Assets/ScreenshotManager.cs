@@ -38,7 +38,7 @@ public class ScreenshotManager : MonoBehaviour {
     IEnumerator TakeScreenshot() {
         finished = false;
 
-        if (ScreenshotCamera.transform.position.x <= 1450) {
+        if (ScreenshotCamera.transform.position.x >= 1450) {
             numZ++;
             numX = 0;
             Debug.Log("Increasing Y");
