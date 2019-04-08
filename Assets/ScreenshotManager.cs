@@ -18,8 +18,8 @@ public class ScreenshotManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         numX = 0;
-        total = 2002;
-        numZ = 0;
+        total = 3796;
+        numZ = 40;
         finished = true;
 	}
 
@@ -38,17 +38,17 @@ public class ScreenshotManager : MonoBehaviour {
     IEnumerator TakeScreenshot() {
         finished = false;
 
-        if (ScreenshotCamera.transform.position.x >= 1450) {
+        if (ScreenshotCamera.transform.position.x <= -2842) {
             numZ++;
             numX = 0;
             Debug.Log("Increasing Y");
         }
 
-        if (ScreenshotCamera.transform.position.z >= 2320){
+        if (ScreenshotCamera.transform.position.z <= -870) {
             StartScreenshots = false;
         }
 
-        ScreenshotCamera.transform.position = new Vector3(58 * numX, ScreenshotCamera.transform.position.y, numZ*58);
+        ScreenshotCamera.transform.position = new Vector3(-58 * numX, ScreenshotCamera.transform.position.y, -numZ*58);
         yield return new WaitForSeconds(2f);
         ScreenCapture.CaptureScreenshot("Assets/MapTextures/Test" + total + ".png");
         Debug.Log("Screenshot Taken! " + " Num: " + numX + " total: " + total );
