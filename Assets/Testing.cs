@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Testing : MonoBehaviour {
 
-    [Range(0, 3)]
+    [Range(0, 5)]
     public float GameSpeed;
 
 	// Use this for initialization
