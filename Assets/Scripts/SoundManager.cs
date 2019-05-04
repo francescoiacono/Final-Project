@@ -6,22 +6,23 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-
-    public static SoundManager Instance; // test, TODO instance test
+    public static SoundManager Instance;
     public AudioFile[] AudioFiles; // All audiofiles stored in this array that can be updated in the inspector
-
-
-	private PlaneManager planeManager;
 
     void Awake()
     {
-        Instance = this; 
+        Instance = this;
     }
 
-    void Start ()
-	{
-		planeManager = GameObject.FindWithTag("Plane").GetComponent<PlaneManager>();
-	}
+    private void Start()
+    {
+        StartCoroutine(WaitToPlaySound("plane-sound", 0, 345, 0.3f));
+        StartCoroutine(WaitToPlaySound("people-sound", 0, 121, 0.1f));
+        StartCoroutine(WaitToPlaySound("captain-brace", 300, 305, 1));
+        StartCoroutine(WaitToPlaySound("crew-brace", 305, 38, 1));
+        StartCoroutine(WaitToPlaySound("water-sound", 345, 32, 1));
+        StartCoroutine(WaitToPlaySound("birds-sound", 120, 137, 1));
+    }
 
 
     // Function to play a determined sound once
@@ -30,16 +31,28 @@ public class SoundManager : MonoBehaviour
         AudioFile af = GetAudioFile(name);
         if (af != null)
         {
-            if(!af.played)
+            if (!af.played)
             {
                 af.AudioSource.Play();
-	            af.played = true;
+                af.played = true;
+            }
+        }
+    }
+
+    public void StopSound(string name)
+    {
+        AudioFile af = GetAudioFile(name);
+        if (af != null)
+        {
+            if (af.played)
+            {
+                af.AudioSource.Stop();
             }
         }
     }
 
     // Function that gets the audiofile name and if it matches return that audiofile
-	AudioFile GetAudioFile(string name)
+    AudioFile GetAudioFile(string name)
 	{
 
 		for (int i = 0; i < AudioFiles.Length; i++)
@@ -52,4 +65,18 @@ public class SoundManager : MonoBehaviour
 
 		return null;
 	}
+
+
+    IEnumerator WaitToPlaySound(string name, float time, float duration, float volume) {
+
+        yield return new WaitForSeconds(time);
+        PlaySound(name);
+        yield return new WaitForSeconds(120);
+        GetAudioFile(name).AudioSource.volume = volume;
+        yield return new WaitForSeconds(duration);
+        StopSound(name);
+
+    }
+
+
 }

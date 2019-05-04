@@ -37,7 +37,7 @@ public class MapManager : MonoBehaviour
 		lastPosCoord = new Vector3(EnvList[nEnv - 1].transform.position.x, EnvList[nEnv - 1].transform.position.y,
 			EnvList[nEnv - 1].transform.position.z);
 		plane = GameObject.FindWithTag("Plane");
-        sm = SoundManager.Instance;
+        //sm = SoundManager.Instance;
 	}
 
 void Update()
