@@ -16,12 +16,12 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(WaitToPlaySound("plane-sound", 0, 345, 0.3f));
-        StartCoroutine(WaitToPlaySound("people-sound", 0, 121, 0.1f));
-        StartCoroutine(WaitToPlaySound("captain-brace", 300, 305, 1));
-        StartCoroutine(WaitToPlaySound("crew-brace", 305, 38, 1));
-        StartCoroutine(WaitToPlaySound("water-sound", 345, 32, 1));
-        StartCoroutine(WaitToPlaySound("birds-sound", 120, 137, 1));
+        StartCoroutine(WaitToPlaySound("plane-sound", 0, 345, 0.3f, 120));
+        StartCoroutine(WaitToPlaySound("people-sound", 0, 121, 0.3f, 0));
+        StartCoroutine(WaitToPlaySound("captain-brace", 300, 305, 1, 0));
+        StartCoroutine(WaitToPlaySound("crew-brace", 305, 38, 1, 0));
+        StartCoroutine(WaitToPlaySound("water-sound", 345, 32, 1, 0));
+        StartCoroutine(WaitToPlaySound("birds-sound", 120, 137, 1, 0));
     }
 
 
@@ -67,11 +67,11 @@ public class SoundManager : MonoBehaviour
 	}
 
 
-    IEnumerator WaitToPlaySound(string name, float time, float duration, float volume) {
+    IEnumerator WaitToPlaySound(string name, float time, float duration, float volume, float volumeTime) {
 
         yield return new WaitForSeconds(time);
         PlaySound(name);
-        yield return new WaitForSeconds(120);
+        yield return new WaitForSeconds(volumeTime);
         GetAudioFile(name).AudioSource.volume = volume;
         yield return new WaitForSeconds(duration);
         StopSound(name);
