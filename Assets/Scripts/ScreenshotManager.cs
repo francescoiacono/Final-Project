@@ -8,14 +8,13 @@ using UnityEngine;
 
 public class ScreenshotManager : MonoBehaviour {
 
-    private int numX;
-    private int numZ;
-    public Camera ScreenshotCamera;
-    public bool StartScreenshots;
-    private bool finished;
-    private int total;
+    private int numX; // following x axis
+    private int numZ; // following z axis
+    public Camera ScreenshotCamera; // Camera that takes the screenshots
+    public bool StartScreenshots; // Variable to start the screenshots
+    private bool finished; // Checking if the screenshots are completed
+    private int total; // Total number of screenshots
 
-	// Use this for initialization
 	void Start () {
         numX = 0;
         total = 4498;
@@ -23,9 +22,9 @@ public class ScreenshotManager : MonoBehaviour {
         finished = true;
 	}
 
-    // Update is called once per frame
     void Update()
     {
+        // Start taking screenshot
         if (StartScreenshots) { 
             if (finished)
             {
@@ -35,6 +34,8 @@ public class ScreenshotManager : MonoBehaviour {
 
 	}
 
+    // Take screenshot function which will move the camera, tile by tile, take the screenshot
+    // and save the file as a png
     IEnumerator TakeScreenshot() {
         finished = false;
 

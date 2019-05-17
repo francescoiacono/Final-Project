@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    public static SoundManager Instance;
+    public static SoundManager Instance; // NB: THIS VARIABLE WAS USED IN THE PROTOTYPE
     public AudioFile[] AudioFiles; // All audiofiles stored in this array that can be updated in the inspector
 
     void Awake()
@@ -16,6 +16,7 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
+        // Running all the sounds from the beginning        
         StartCoroutine(WaitToPlaySound("plane-sound", 0, 345, 0.3f, 120));
         StartCoroutine(WaitToPlaySound("people-sound", 0, 121, 0.3f, 0));
         StartCoroutine(WaitToPlaySound("captain-brace", 300, 305, 1, 0));
@@ -39,6 +40,7 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    // Function to stop a determined sound
     public void StopSound(string name)
     {
         AudioFile af = GetAudioFile(name);
@@ -66,7 +68,9 @@ public class SoundManager : MonoBehaviour
 		return null;
 	}
 
-
+    // Main function which will wait a certain time to play the sound
+    // after a certain period the volume sound will be changed or not
+    // after a certain duration the sound will stop
     IEnumerator WaitToPlaySound(string name, float time, float duration, float volume, float volumeTime) {
 
         yield return new WaitForSeconds(time);

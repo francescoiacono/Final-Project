@@ -4,9 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Defining and controlling Plane Movements
+// NB: This script was used in the prototype
 
 public class PlaneManager : MonoBehaviour
 {
+
+    // Defining plane settings into the inspector
 
 	[Header("Plane Settings")] 
 	public Vector3 PlanePosition;
@@ -24,10 +27,6 @@ public class PlaneManager : MonoBehaviour
 	[Header("Plane State")]
 	public State CurrentState;
 
-    [Header("Path")]
-    public Transform[] PathPoints;
-    public bool followingPath;
-
     private bool up;
 	private bool stable;
     private float speed;
@@ -39,7 +38,6 @@ public class PlaneManager : MonoBehaviour
 		transform.position = PlanePosition;
 		CurrentState = State.Stable;
         speed = 0;
-        k = 0;
 	}
 
 	void Update () {
@@ -58,38 +56,7 @@ public class PlaneManager : MonoBehaviour
                 break;
         }
 
-        followPath(PathPoints[k]);
 	}
-
-    // follow path
-    void followPath(Transform path) {
-        if (followingPath)
-        {
-            if (Vector3.Distance(transform.position, path.position) > 0)
-            {
-                if (speed < MaxSpeed)
-                {
-                    speed = speed + Acceleration * Time.deltaTime;
-                } else {
-                    speed = MaxSpeed;
-                }                
-                transform.position = Vector3.MoveTowards(transform.position, path.position, speed * 0.5f);
-
-
-                ///////////////////////////////////////////////////////////////////////////////////////////
-                // Rotation code from: https://docs.unity3d.com/ScriptReference/Vector3.RotateTowards.html
-                Vector3 targetDir = path.position - transform.position;
-                float step = RotationSpeed * Time.deltaTime;
-                Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, step, 0.0f);
-                transform.rotation = Quaternion.LookRotation(newDir);
-                ///////////////////////////////////////////////////////////////////////////////////////////
-
-            }
-            else {
-                k++;
-            }
-        }
-    }
 
 	// Function to descend
 	void PlaneDescending()
@@ -124,29 +91,6 @@ public class PlaneManager : MonoBehaviour
         }
         stable = true;
     }
-
-    // TODO FIX FLOATING
-    void Floating()
-	{
-		StartCoroutine(floatUp(1f));
-		StartCoroutine(floatDown(1f));
-	}
-
-	// TODO fix floating
-	
-	private IEnumerator floatUp(float time)
-	{
-		yield return new WaitForSeconds(time);
-		transform.Translate(new Vector3(0f,0.1f,0f));
-	}
-	
-	private IEnumerator floatDown(float time)
-	{
-		yield return new WaitForSeconds(time);
-		transform.Translate(new Vector3(0f,-0.1f,0f));
-	}
-	
-
 
 
 }

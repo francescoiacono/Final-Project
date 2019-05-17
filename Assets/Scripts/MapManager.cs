@@ -5,6 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+// NB: script used into the prototype
 // Moving map around the plane
 
 public class MapManager : MonoBehaviour

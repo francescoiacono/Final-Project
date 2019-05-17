@@ -4,19 +4,21 @@ using UnityEngine;
 
 public class SplashEffect : MonoBehaviour
 {
-	public GameObject SplashObject;
-	//public static SplashEffect Instance;
-	public int MaxSplashObjects;
-	public float LifeTime;
+
+    // NB: THIS SCRIPT WAS USED IN THE PROTOTYPE
+
+	public GameObject SplashObject; // Set to be the prefab of the splash object
+	public int MaxSplashObjects; // Maximun number of splash objects
+	public float LifeTime; // Their life span
 	
-	private List<Rigidbody> rbs;
-	private List<GameObject> splashObjects;
-	private float x = 15f;
-	public bool stop;
+	private List<Rigidbody> rbs; // List of rigid bodies, it will contain the physics component of every
+    //                              splash object and apply forces to them
+	private List<GameObject> splashObjects; // List of splash objects
+	private float x = 15f; // This is a range, it will move the objects around -x and x. 
+	public bool stop; // Stop creating objects
 
 	private void Awake()
 	{
-		//Instance = this;
 	}
 
 	private void Start()
@@ -27,9 +29,9 @@ public class SplashEffect : MonoBehaviour
 
 	public void Splash()
 	{	
+        // Function to create objects, apply force to them and then realise when they need to be destroyed.
 		if (!stop)
 		{
-			print("GoingToWork");
 			for (int i = 0; i < MaxSplashObjects; i++)
 			{
 				splashObjects.Add(Instantiate(SplashObject, transform.position, Quaternion.identity));
@@ -43,6 +45,7 @@ public class SplashEffect : MonoBehaviour
 		}
 	}
 
+    // Function to destroy the splash objects
 	private IEnumerator WaitAndKill(float lifeTime)
 	{
 		while (true)

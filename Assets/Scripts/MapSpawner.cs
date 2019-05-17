@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// This script has been used in order to develop a nice map
+// It places the prefab tiles into the environment and apply the sprites needed
+
 public class MapSpawner : MonoBehaviour {
+    
+    public List<Sprite> sprites; // All the sprites
+    public GameObject MapTile; // MapTile prefab
+    private int numY; // Moving on the Y axis
+    private int numX; // Moving on X axis
 
-    public List<Sprite> sprites;
-    public GameObject MapTile;
-    private int numY;
-    private int numX;
+    // For each sprite in sprites, instantiate a new maptile with the current sprite.
 
-    // Use this for initialization
     void Start () {
         numX = 0;
         numY = 0;
@@ -27,7 +31,6 @@ public class MapSpawner : MonoBehaviour {
         }
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		
 	}

@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class Testing : MonoBehaviour {
 
+    // Script used to make the testing faster
+    // It basically increase the speed of the gameplay through a slider in the inspector
+
     [Range(0, 10)]
     public float GameSpeed;
 
-	// Use this for initialization
 	void Start () {
         GameSpeed = 1f;
 	}
 	
-	// Update is called once per frame
 	void Update () {
         Time.timeScale = GameSpeed;
 	}

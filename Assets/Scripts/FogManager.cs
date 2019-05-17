@@ -7,6 +7,8 @@ public class FogManager : MonoBehaviour {
 
     // Map angle = -32
 
+    // THIS SCRIPT CREATES THE FOG (or clouds) FOR WHEN THE PLANE IS IN MIDAIR
+
     public List<GameObject> FogTiles; // List of fog tiles
     public GameObject Plane; // Plane Object
 
